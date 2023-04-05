@@ -1,4 +1,4 @@
-.profile__add-button {
+.profile__add-btn {
     all: unset;
     background-image: url(../../../images/profile/profile__add-button.svg);
     background-size: 22px 22px;
@@ -13,14 +13,14 @@
 }
 
 @media (max-width: 767px) {
-    .profile__add-button {
+    .profile__add-btn {
         background-size: 20px 20px;
         width: 60%;
     }
 }
 
 @media (max-width: 424px) {
-    .profile__add-button {
+    .profile__add-btn {
         background-size: 16px 16px;
         width: 100%;
     }

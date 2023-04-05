@@ -20,11 +20,11 @@
                 <div class="profile__info">
                     <div class="profile__container">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="submit"></button>
+                        <button class="profile__edit-btn" type="submit"></button>
                     </div>
                     <p class="profile__job">Исследователь океана</p>
                 </div>
-                <button class="profile__add-button" type="submit"></button>
+                <button class="profile__add-btn" type="submit"></button>
             </section>
             <section class="elements">
                 <ul class="elements__list">
@@ -78,7 +78,21 @@
                 &copy;2023 Виктория Маликова
             </p>
         </footer>
+        <div class="popup">
+            <form class="edit-form">
+                <div class="popup__container">
+                    <button class="popup__close-btn" type="submit"></button>
+                    <h2 class="popup__title">
+                        Редактировать профиль
+                    </h2>
+                    <input type="text" class="popup__item popup__item_el_name">
+                    <input type="text" class="popup__item popup__item_el_job">
+                    <button class="popup__save-btn" type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
     </div>
+    <script src="./pages/index.js"></script>
 </body>
 
 </html>
