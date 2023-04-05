@@ -19,7 +19,7 @@ function closePopup() {
 openPopupBtn.addEventListener('click', openPopup);
 closePopupBtn.addEventListener('click', closePopup);
 
-let formElement = document.querySelector('.edit-form');
+const formElement = document.querySelector('.edit-form');
 
 function handleFormSubmit(evt) {
     evt.preventDefault();

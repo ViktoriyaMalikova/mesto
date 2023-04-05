@@ -10,6 +10,11 @@
     background-color: #000;
     width: 150px;
     height: 50px;
+    transition: opacity .3s linear;
+}
+
+.profile__add-btn:hover {
+    opacity: .6;
 }
 
 @media (max-width: 767px) {
