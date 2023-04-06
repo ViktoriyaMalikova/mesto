@@ -1,3 +1,4 @@
+// Открытие и закрытие попапа
 const openPopupBtn = document.querySelector('.profile__edit-btn');
 const closePopupBtn = document.querySelector('.popup__close-btn');
 const popup = document.querySelector('.popup');
@@ -12,12 +13,15 @@ function openPopup() {
     jobInput.value = jobForm.textContent
 }
 
+openPopupBtn.addEventListener('click', openPopup);
+
 function closePopup() {
     popup.classList.remove('popup_open');
 }
 
-openPopupBtn.addEventListener('click', openPopup);
 closePopupBtn.addEventListener('click', closePopup);
+
+// Редактирование имени и информации о себе
 
 const formElement = document.querySelector('.edit-form');
 
@@ -25,8 +29,7 @@ function handleFormSubmit(evt) {
     evt.preventDefault();
     nameForm.textContent = nameInput.value;
     jobForm.textContent = jobInput.value;
-    popup.classList.remove('popup_open');
-
+    closePopup();
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
