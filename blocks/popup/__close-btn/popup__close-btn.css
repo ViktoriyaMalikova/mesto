@@ -10,6 +10,7 @@
     top: -40px;
     right: -40px;
     transition: opacity .3s linear;
+    cursor: pointer;
 }
 
 .popup__close-btn:hover {
@@ -20,7 +21,6 @@
     .popup__close-btn {
         width: 20px;
         height: 20px;
-        top: -40px;
         right: 0px;
     }
 }

@@ -1,6 +1,5 @@
 // Открытие и закрытие попапа
 const openPopupBtn = document.querySelector('.profile__edit-btn');
-const closePopupBtn = document.querySelector('.popup__close-btn');
 const popup = document.querySelector('.popup');
 const nameInput = document.querySelector('.popup__item_el_name');
 const jobInput = document.querySelector('.popup__item_el_job');
@@ -8,22 +7,24 @@ const nameForm = document.querySelector('.profile__name');
 const jobForm = document.querySelector('.profile__job');
 
 function openPopup() {
-    popup.classList.add('popup_open');
+    popup.classList.add('popup_opened');
     nameInput.value = nameForm.textContent;
     jobInput.value = jobForm.textContent
 }
 
 openPopupBtn.addEventListener('click', openPopup);
 
+const closePopupBtn = document.querySelector('.popup__close-btn');
+
 function closePopup() {
-    popup.classList.remove('popup_open');
+    popup.classList.remove('popup_opened');
 }
 
 closePopupBtn.addEventListener('click', closePopup);
 
 // Редактирование имени и информации о себе
 
-const formElement = document.querySelector('.edit-form');
+const formElement = document.querySelector('.popup__edit-form');
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -32,4 +33,4 @@ function handleFormSubmit(evt) {
     closePopup();
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', handleFormSubmit); 
