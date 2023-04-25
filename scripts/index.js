@@ -20,7 +20,7 @@ const linkInputAddPopup = document.querySelector('.popup__item_el_link');
 
 //Элементы imagePopup
 const imagePopup = document.querySelector('.popup_type_open-image');
-const btnCloseImagPopup = imagePopup.querySelector('.popup__close-btn_type_open-image');
+const btnCloseImagePopup = imagePopup.querySelector('.popup__close-btn_type_open-image');
 
 //Другие элементы
 const elementsList = document.querySelector('.elements__list');
@@ -106,7 +106,7 @@ function createImageElement(cardData) {
     cardImage.addEventListener('click', openPopupImage);
     deleteButton.addEventListener('click', handleDelete);
     likeButton.addEventListener('click', handleLike);
-    btnCloseImagPopup.addEventListener('click', () => closePopup(imagePopup));
+    btnCloseImagePopup.addEventListener('click', () => closePopup(imagePopup));
 
     return cardsElement;
 }
