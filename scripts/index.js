@@ -49,7 +49,6 @@ const cardTemplate = document.querySelector('.elements-template');
 
 function createImageElement(cardData) {
     const cardsElement = cardTemplate.content.querySelector('.elements__element').cloneNode(true);
-
     const cardImage = cardsElement.querySelector('.elements__image');
     const cardTitle = cardsElement.querySelector('.elements__title');
 
@@ -63,7 +62,6 @@ function createImageElement(cardData) {
 
     // Открытие попапа с картинкой 
     function openPopupImage() {
-
         const imageSrc = cardImage.src;
         const imageAlt = cardImage.alt;
         const imageName = cardTitle.textContent;
