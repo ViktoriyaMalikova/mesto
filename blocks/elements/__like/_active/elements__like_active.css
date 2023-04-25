@@ -1,4 +1,4 @@
 .elements__like_active {
     opacity: 1;
-    background-size: url(../../../../images/elements/elements__like_active.svg);
+    background-image: url(../../../../images/elements/elements__like_active.svg);
 }

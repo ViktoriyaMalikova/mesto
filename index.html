@@ -28,49 +28,7 @@
             </section>
             <section class="elements">
                 <ul class="elements__list">
-                    <li class="elements__element">
-                        <img src="./images/elements/elements__karachaevsk.jpg" alt="Карачаевск" class="elements__image">
-                        <div class="elements__wrapper">
-                            <h2 class="elements__title">Карачаевск</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__element">
-                        <img src="./images/elements/elements__elbrus.png" alt="Гора Эльбрус" class="elements__image">
-                        <div class="elements__wrapper">
-                            <h2 class="elements__title">Гора Эльбрус</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__element">
-                        <img src="./images/elements/elements__dombay.png" alt="Домбай" class="elements__image">
-                        <div class="elements__wrapper">
-                            <h2 class="elements__title">Домбай</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__element">
-                        <img src="./images/elements/elements__elbrus.png" alt="Гора Эльбрус" class="elements__image">
-                        <div class="elements__wrapper">
-                            <h2 class="elements__title">Гора Эльбрус</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__element">
-                        <img src="./images/elements/elements__dombay.png" alt="Домбай" class="elements__image">
-                        <div class="elements__wrapper">
-                            <h2 class="elements__title">Домбай</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__element">
-                        <img src="./images/elements/elements__karachaevsk.jpg" alt="Карачаево-Черкесия"
-                            class="elements__image">
-                        <div class="elements__wrapper">
-                            <h2 class="elements__title">Карачаево-Черкесия</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </li>
+
                 </ul>
             </section>
         </main>
@@ -79,20 +37,55 @@
                 &copy;2023 Виктория Маликова
             </p>
         </footer>
-        <div class="popup">
-            <div class="popup__container">
-                <button class="popup__close-btn" type="button"></button>
+        <template class="elements-template">
+            <li class="elements__element">
+                <img src="" alt="" class="elements__image">
+                <button class="elements__delete" type="button"></button>
+                <div class="elements__wrapper">
+                    <h2 class="elements__title"></h2>
+                    <button class="elements__like" type="button"></button>
+                </div>
+            </li>
+        </template>
+        <div class="popup popup_overlay_light popup_type_edit-profile">
+            <div class="popup__container popup__container_type_form">
+                <button class="popup__close-btn popup__close-btn_type_edit-profile" type="button"></button>
                 <h2 class="popup__title">
                     Редактировать профиль
                 </h2>
-                <form class="popup__edit-form" name="popupForm">
+                <form class="popup__form popup__form_type_edit-profile" name="popupForm">
                     <input type="text" class="popup__item popup__item_el_name" name="popupInputName">
                     <input type="text" class="popup__item popup__item_el_job" name="popupInputJob">
                     <button class="popup__save-btn" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
+        <div class="popup popup_overlay_light popup_type_aad-card">
+            <div class="popup__container popup__container_type_form">
+                <button class="popup__close-btn popup__close-btn_type_add-card" type="button"></button>
+                <h2 class="popup__title">
+                    Новое место
+                </h2>
+                <form class="popup__form popup__form_type_add-card" name="popupAddCard">
+                    <input type="text" class="popup__item popup__item_el_caption" name="popupInputCaption"
+                        placeholder="Название">
+                    <input type="text" class="popup__item popup__item_el_link" name="popupInputLink"
+                        placeholder="Ссылка на картинку">
+                    <button class="popup__save-btn" type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup popup_overlay_dark popup_type_open-image">
+            <div class="popup__container">
+                <figure class="popup__figure">
+                    <button class="popup__close-btn popup__close-btn_type_open-image" type="button"></button>
+                    <img src="" alt="" class="popup__image">
+                    <figcaption class="popup__figcaption"></figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
+    <script src="./scripts/constans.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 
