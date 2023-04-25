@@ -90,7 +90,6 @@ function createImageElement(cardData) {
         popupImageImg.src = cardData.link;
         popupImageImg.alt = cardData.name;
         popupImageFigcaption.textContent = cardData.name;
-
         openPopup(imagePopup);
     }
 
