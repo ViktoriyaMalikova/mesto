@@ -6,21 +6,21 @@ const btnOpenEditPopup = document.querySelector('.profile__edit-btn');
 // Элементы editPopup
 const editPopup = document.querySelector('.popup_type_edit-profile');
 const formElementEditPopup = document.querySelector('.popup__form_type_edit-profile');
-const btnCloseEditPopup = editPopup.querySelector('.popup__close-btn_type_edit-profile');
+const btnCloseEditPopup = editPopup.querySelector('.popup__close-btn');
 const nameInputEditPopup = document.querySelector('.popup__item_el_name');
 const jobInputEditPopup = document.querySelector('.popup__item_el_job');
 
 // Элементы addPopup
 const addPopup = document.querySelector('.popup_type_aad-card');
 const formElementAddPopup = document.querySelector('.popup__form_type_add-card');
-const btnCloseAddPopup = addPopup.querySelector('.popup__close-btn_type_add-card');
+const btnCloseAddPopup = addPopup.querySelector('.popup__close-btn');
 const btnOpenAddPopup = document.querySelector('.profile__add-btn');
 const captionInputAddPopup = document.querySelector('.popup__item_el_caption');
 const linkInputAddPopup = document.querySelector('.popup__item_el_link');
 
 //Элементы imagePopup
 const imagePopup = document.querySelector('.popup_type_open-image');
-const btnCloseImagePopup = imagePopup.querySelector('.popup__close-btn_type_open-image');
+const btnCloseImagePopup = imagePopup.querySelector('.popup__close-btn');
 
 //Другие элементы
 const elementsList = document.querySelector('.elements__list');
@@ -39,7 +39,7 @@ function closePopup(popupElement) {
 //Функция открытия попапа редактирования профиля
 function openPopupEditProfile() {
     nameInputEditPopup.value = nameFormProfile.textContent;
-    jobInputEditPopup.value = jobFormProfile.textContent
+    jobInputEditPopup.value = jobFormProfile.textContent;
     openPopup(editPopup);
 }
 
@@ -106,7 +106,6 @@ function createImageElement(cardData) {
     cardImage.addEventListener('click', openPopupImage);
     deleteButton.addEventListener('click', handleDelete);
     likeButton.addEventListener('click', handleLike);
-    btnCloseImagePopup.addEventListener('click', () => closePopup(imagePopup));
 
     return cardsElement;
 }
@@ -122,3 +121,4 @@ formElementAddPopup.addEventListener('submit', handleAddCardFormSubmit);
 btnOpenEditPopup.addEventListener('click', openPopupEditProfile);
 btnCloseEditPopup.addEventListener('click', () => closePopup(editPopup));
 formElementEditPopup.addEventListener('submit', handleProfileFormSubmit);
+btnCloseImagePopup.addEventListener('click', () => closePopup(imagePopup));
