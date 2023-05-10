@@ -53,9 +53,13 @@
                 <h2 class="popup__title">
                     Редактировать профиль
                 </h2>
-                <form class="popup__form popup__form_type_edit-profile" name="popupForm">
-                    <input type="text" class="popup__item popup__item_el_name" name="popupInputName">
-                    <input type="text" class="popup__item popup__item_el_job" name="popupInputJob">
+                <form class="popup__form popup__form_type_edit-profile" name="popupForm" novalidate>
+                    <input type="text" class="popup__item popup__item_el_name" id="name-item" name="popupInputName"
+                        minlength="2" maxlength="40" required>
+                    <span class="popup__item-error name-item-error"></span>
+                    <input type="text" class="popup__item popup__item_el_job" id="job-item" name="popupInputJob"
+                        minlength="2" maxlength="200" required>
+                    <span class="popup__item-error job-item-error"></span>
                     <button class="popup__save-btn" type="submit">Сохранить</button>
                 </form>
             </div>
@@ -66,11 +70,13 @@
                 <h2 class="popup__title">
                     Новое место
                 </h2>
-                <form class="popup__form popup__form_type_add-card" name="popupAddCard">
-                    <input type="text" class="popup__item popup__item_el_caption" name="popupInputCaption"
-                        placeholder="Название">
-                    <input type="text" class="popup__item popup__item_el_link" name="popupInputLink"
-                        placeholder="Ссылка на картинку">
+                <form class="popup__form popup__form_type_add-card" name="popupAddCard" novalidate>
+                    <input type="text" minlength="2" maxlength="30" class="popup__item popup__item_el_caption"
+                        id="caption-item" name="popupInputCaption" placeholder="Название" required>
+                    <span class="popup__item-error caption-item-error"></span>
+                    <input type="url" class="popup__item popup__item_el_link" id="link-item" name="popupInputLink"
+                        placeholder="Ссылка на картинку" required>
+                    <span class="popup__item-error link-item-error"></span>
                     <button class="popup__save-btn" type="submit">Создать</button>
                 </form>
             </div>
@@ -86,6 +92,7 @@
         </div>
     </div>
     <script src="./scripts/constans.js"></script>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 
