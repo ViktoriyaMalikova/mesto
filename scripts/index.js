@@ -1,3 +1,7 @@
+import { Card } from "./Card.js";
+import { initialCards } from "./constans.js";
+import { FormValidator } from "./FormValidator.js";
+
 // Элементы секции profile
 const nameFormProfile = document.querySelector('.profile__name');
 const jobFormProfile = document.querySelector('.profile__job');
@@ -6,30 +10,32 @@ const btnOpenEditPopup = document.querySelector('.profile__edit-btn');
 // Элементы editPopup
 const editPopup = document.querySelector('.popup_type_edit-profile');
 const formElementEditPopup = document.querySelector('.popup__form_type_edit-profile');
-const btnCloseEditPopup = editPopup.querySelector('.popup__close-btn');
 const nameInputEditPopup = document.querySelector('.popup__item_el_name');
 const jobInputEditPopup = document.querySelector('.popup__item_el_job');
-const btnSaveEditForm = editPopup.querySelector('.popup__save-btn');
 
 // Элементы addPopup
 const addPopup = document.querySelector('.popup_type_aad-card');
 const formElementAddPopup = document.querySelector('.popup__form_type_add-card');
-const btnCloseAddPopup = addPopup.querySelector('.popup__close-btn');
 const btnOpenAddPopup = document.querySelector('.profile__add-btn');
 const captionInputAddPopup = document.querySelector('.popup__item_el_caption');
 const linkInputAddPopup = document.querySelector('.popup__item_el_link');
-const btnSaveAddForm = addPopup.querySelector('.popup__save-btn');
 
 //Элементы imagePopup
 const imagePopup = document.querySelector('.popup_type_open-image');
-const btnCloseImagePopup = imagePopup.querySelector('.popup__close-btn');
 const popupImageImg = document.querySelector('.popup__image');
 const popupImageFigcaption = document.querySelector('.popup__figcaption');
 
 //Другие элементы
 const elementsList = document.querySelector('.elements__list');
-const cardTemplate = document.querySelector('.elements-template');
 const popupList = Array.from(document.querySelectorAll('.popup'));
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__save-btn',
+    inputErrorClass: 'popup__item_error',
+    inactiveButtonClass: 'popup__save-btn_inactive',
+    errorClass: 'popup__item-error_active'
+};
 
 // Закрытие попапов по клику на оверлей
 const closePopupClickOverlay = (evt) => {
@@ -64,7 +70,8 @@ const closePopup = (popupElement) => {
 
 //Функция открытия попапа редактирования профиля
 const openPopupEditProfile = () => {
-    enableButton(btnSaveEditForm, { inactiveButtonClass: 'popup__save-btn_inactive' });
+    formElementEditPopup.reset();
+    formEditValidator.resetError();
     nameInputEditPopup.value = nameFormProfile.textContent;
     jobInputEditPopup.value = jobFormProfile.textContent;
     openPopup(editPopup);
@@ -72,10 +79,17 @@ const openPopupEditProfile = () => {
 
 //Функция открытия попапа добавленния карточки
 const openPopupAddCard = () => {
-    disableButton(btnSaveAddForm, { inactiveButtonClass: 'popup__save-btn_inactive' });
-    linkInputAddPopup.value = "";
-    captionInputAddPopup.value = "";
+    formElementAddPopup.reset();
+    formAddValidator.resetError();
     openPopup(addPopup);
+}
+
+// Функция открытия попапа с картинкой
+const openPopupImage = (cardData) => {
+    popupImageImg.src = cardData.link;
+    popupImageImg.alt = cardData.name;
+    popupImageFigcaption.textContent = cardData.name;
+    openPopup(imagePopup);
 }
 
 // Редактирование имени и информации о себе
@@ -93,52 +107,26 @@ const handleAddCardFormSubmit = (evt) => {
         name: captionInputAddPopup.value,
         link: linkInputAddPopup.value
     };
-    const element = createImageElement(cardAdd);
-    elementsList.prepend(element);
+    const element = new Card(cardAdd, '.elements-template', openPopupImage);
+    const cardElement = element.generateCard();
+    elementsList.prepend(cardElement);
     closePopup(addPopup);
 }
 
-// Добавление карточек из массива
-const createImageElement = (cardData) => {
-    const cardsElement = cardTemplate.content.querySelector('.elements__element').cloneNode(true);
-    const cardImage = cardsElement.querySelector('.elements__image');
-    const cardTitle = cardsElement.querySelector('.elements__title');
-    const deleteButton = cardsElement.querySelector('.elements__delete');
-    const likeButton = cardsElement.querySelector('.elements__like');
-
-    cardImage.src = cardData.link;
-    cardImage.alt = cardData.name;
-    cardTitle.textContent = cardData.name;
-
-    // Открытие попапа с картинкой 
-    const openPopupImage = () => {
-        popupImageImg.src = cardData.link;
-        popupImageImg.alt = cardData.name;
-        popupImageFigcaption.textContent = cardData.name;
-        openPopup(imagePopup);
-    }
-
-    //Удаление карточки
-    const handleDelete = () => {
-        cardsElement.remove();
-    };
-
-    // Лайк карточки   
-    const handleLike = (evt) => {
-        likeButton.classList.toggle('elements__like_active');
-    };
-
-    cardImage.addEventListener('click', openPopupImage);
-    deleteButton.addEventListener('click', handleDelete);
-    likeButton.addEventListener('click', handleLike);
-
-    return cardsElement;
-}
-
+//Создание экземпляра класса Card для каждой карточки
 initialCards.forEach(card => {
-    const element = createImageElement(card);
-    elementsList.append(element);
+    const element = new Card(card, '.elements-template', openPopupImage);
+    const cardElement = element.generateCard();
+    elementsList.append(cardElement);
 });
+
+//Создание экземпляра класса FormValidator для формы редактирования профиля
+const formEditValidator = new FormValidator(validationConfig, formElementEditPopup);
+formEditValidator.enableValidation();
+
+//Создание экземпляра класса FormValidator для формы добавления карточки
+const formAddValidator = new FormValidator(validationConfig, formElementAddPopup);
+formAddValidator.enableValidation();
 
 btnOpenAddPopup.addEventListener('click', openPopupAddCard);
 formElementAddPopup.addEventListener('submit', handleAddCardFormSubmit);
