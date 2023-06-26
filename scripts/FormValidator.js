@@ -53,8 +53,8 @@ class FormValidator {
             input.addEventListener('input', () => {
                 this._checkInputValidity(input);
                 this._toggleButtonState();
-            });
-        });
+            })
+        })
     }
 
     _disableButton = () => {
@@ -74,7 +74,7 @@ class FormValidator {
                 evt.preventDefault();
             });
             this._setEventListeners();
-        });
+        })
     }
 
     resetError = () => {
@@ -85,7 +85,7 @@ class FormValidator {
             } else {
                 this._disableButton();
             }
-        });
+        })
     }
 }
 

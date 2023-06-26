@@ -35,7 +35,7 @@ const validationConfig = {
     inputErrorClass: 'popup__item_error',
     inactiveButtonClass: 'popup__save-btn_inactive',
     errorClass: 'popup__item-error_active'
-};
+}
 
 // Закрытие попапов по клику на оверлей
 const closePopupClickOverlay = (evt) => {
@@ -45,7 +45,7 @@ const closePopupClickOverlay = (evt) => {
     if (isOverlay || isCloseBtn) {
         popupList.forEach(closePopup);
     }
-};
+}
 
 // Закрытие попапа нажатие на Esc
 const closePopupClickEsc = (evt) => {
@@ -118,7 +118,7 @@ initialCards.forEach(card => {
     const element = new Card(card, '.elements-template', openPopupImage);
     const cardElement = element.generateCard();
     elementsList.append(cardElement);
-});
+})
 
 //Создание экземпляра класса FormValidator для формы редактирования профиля
 const formEditValidator = new FormValidator(validationConfig, formElementEditPopup);

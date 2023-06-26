@@ -21,7 +21,7 @@ class Card {
     }
 
     _handleOpenPopupImage = () => {
-        this._openPopupImage(this._cardData)
+        this._openPopupImage(this._cardData);
     }
 
     _setEventListeners = () => {
