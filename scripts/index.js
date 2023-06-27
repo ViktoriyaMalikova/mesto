@@ -1,5 +1,5 @@
 import { Card } from "./Card.js";
-import { initialCards } from "./constans.js";
+import { initialCards, validationConfig } from "./constans.js";
 import { FormValidator } from "./FormValidator.js";
 
 // Элементы секции profile
@@ -27,15 +27,6 @@ const popupImageFigcaption = document.querySelector('.popup__figcaption');
 
 //Другие элементы
 const elementsList = document.querySelector('.elements__list');
-const popupList = Array.from(document.querySelectorAll('.popup'));
-const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__item',
-    submitButtonSelector: '.popup__save-btn',
-    inputErrorClass: 'popup__item_error',
-    inactiveButtonClass: 'popup__save-btn_inactive',
-    errorClass: 'popup__item-error_active'
-}
 
 // Закрытие попапов по клику на оверлей
 const closePopupClickOverlay = (evt) => {
@@ -43,14 +34,14 @@ const closePopupClickOverlay = (evt) => {
     const isCloseBtn = evt.target.classList.contains('popup__close-btn');
 
     if (isOverlay || isCloseBtn) {
-        popupList.forEach(closePopup);
+        closePopup(document.querySelector('.popup_opened'));
     }
 }
 
 // Закрытие попапа нажатие на Esc
 const closePopupClickEsc = (evt) => {
     if (evt.key === 'Escape') {
-        popupList.forEach(closePopup);
+        closePopup(document.querySelector('.popup_opened'));
     }
 }
 
@@ -71,7 +62,7 @@ const closePopup = (popupElement) => {
 //Функция открытия попапа редактирования профиля
 const openPopupEditProfile = () => {
     formElementEditPopup.reset();
-    formEditValidator.resetError();
+    formEditValidator.resetValidationState();
     nameInputEditPopup.value = nameFormProfile.textContent;
     jobInputEditPopup.value = jobFormProfile.textContent;
     openPopup(editPopup);
@@ -80,7 +71,7 @@ const openPopupEditProfile = () => {
 //Функция открытия попапа добавленния карточки
 const openPopupAddCard = () => {
     formElementAddPopup.reset();
-    formAddValidator.resetError();
+    formAddValidator.resetValidationState();
     openPopup(addPopup);
 }
 
@@ -100,6 +91,12 @@ const handleProfileFormSubmit = (evt) => {
     closePopup(editPopup);
 }
 
+const createCard = (card) => {
+    const element = new Card(card, '.elements-template', openPopupImage);
+    const cardElement = element.generateCard();
+    return cardElement;
+}
+
 //Функция добавления карточки
 const handleAddCardFormSubmit = (evt) => {
     evt.preventDefault();
@@ -107,17 +104,13 @@ const handleAddCardFormSubmit = (evt) => {
         name: captionInputAddPopup.value,
         link: linkInputAddPopup.value
     };
-    const element = new Card(cardAdd, '.elements-template', openPopupImage);
-    const cardElement = element.generateCard();
-    elementsList.prepend(cardElement);
+    elementsList.prepend(createCard(cardAdd));
     closePopup(addPopup);
 }
 
 //Создание экземпляра класса Card для каждой карточки
 initialCards.forEach(card => {
-    const element = new Card(card, '.elements-template', openPopupImage);
-    const cardElement = element.generateCard();
-    elementsList.append(cardElement);
+    elementsList.append(createCard(card));
 })
 
 //Создание экземпляра класса FormValidator для формы редактирования профиля

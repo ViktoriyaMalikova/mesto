@@ -1,7 +1,6 @@
 class FormValidator {
     constructor(config, form) {
         this._form = form;
-        this._formSelector = config.formSelector;
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
         this._inputErrorClass = config.inputErrorClass;
@@ -68,24 +67,18 @@ class FormValidator {
     }
 
     enableValidation = () => {
-        this._formList = Array.from(document.querySelectorAll(this._formSelector));
-        this._formList.forEach((form) => {
-            form.addEventListener('submit', (evt) => {
-                evt.preventDefault();
-            });
-            this._setEventListeners();
-        })
+        this._form.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+        });
+        this._setEventListeners();
+
     }
 
-    resetError = () => {
+    resetValidationState = () => {
         this._inputList.forEach((input) => {
             this._hideInputError(input);
-            if (input.validity.valid) {
-                this._enableButton();
-            } else {
-                this._disableButton();
-            }
         })
+        this._toggleButtonState();
     }
 }
 
