@@ -1,4 +1,4 @@
-import { Card } from "./scripts/components/Card.js";
+import { Card } from "../scripts/components/Card.js";
 import {
     initialCards,
     validationConfig,
@@ -7,12 +7,12 @@ import {
     formElementEditPopup,
     formElementAddPopup,
     configInfoProfile
-} from "./scripts/utils/constans.js";
-import { FormValidator } from "./scripts/components/FormValidator.js";
-import { PopupWithImage } from "./scripts/components/PopupWithImage.js";
-import { Section } from "./scripts/components/Section.js";
-import { UserInfo } from "./scripts/components/UserInfo.js";
-import { PopupWithForm } from "./scripts/components/PopupWidthForm.js";
+} from "../scripts/utils/constans.js";
+import { FormValidator } from "../scripts/components/FormValidator.js";
+import { PopupWithImage } from "../scripts/components/PopupWithImage.js";
+import { Section } from "../scripts/components/Section.js";
+import { UserInfo } from "../scripts/components/UserInfo.js";
+import { PopupWithForm } from "../scripts/components/PopupWidthForm.js";
 
 //Создание экземпляра класса PopupWithImage для попапа с картинкой
 const popupImage = new PopupWithImage('.popup_type_open-image');
