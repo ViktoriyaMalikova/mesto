@@ -1,8 +1,8 @@
 class Card {
-    constructor(cardData, templateSelector, openPopupImage) {
+    constructor(cardData, templateSelector, handleCardClick) {
         this._cardData = cardData;
         this._templateSelector = templateSelector;
-        this._openPopupImage = openPopupImage;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate = () => {
@@ -19,7 +19,7 @@ class Card {
     }
 
     _handleOpenPopupImage = () => {
-        this._openPopupImage(this._cardData);
+        this._handleCardClick(this._cardData);
     }
 
     _setEventListeners = () => {
@@ -35,8 +35,8 @@ class Card {
         this._deleteElement = this._element.querySelector('.elements__delete');
         this._title = this._element.querySelector('.elements__title');
         this._imageElement.src = this._cardData.link;
-        this._imageElement.alt = this._cardData.name;
-        this._title.textContent = this._cardData.name;
+        this._imageElement.alt = this._cardData.title;
+        this._title.textContent = this._cardData.title;
         this._setEventListeners();
         return this._element;
     }
