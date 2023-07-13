@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Выполнены проектные работы 4, 5, 6, 7,. Создана адаптивная версия сервиса Mesto. И написана логика на JavaScript: открытие и закрытие попапа редактирования профиля, редактирование имени и информации о себе, добавление карточек из массива, открытие и закрытие попапа добавления нвой карточки, лайк и удаление карточки, плавное закрытие попапа, валидация форм, закрытие попапов кликом на оверлей и нажатием на Esc. В 7ПР выполнен рефакторинг кода, созданы классы Card и FormValidator. В 8ПР продолжен рефакторинг кода, добавлены новые классы, сборка проекта Вебпаком.\r В ходе парктических работ применялись технологии выравнивания и построения сеткии Ggrid Layout и Flexbox, позиционирование, метдология БЭМ, построение файловой структуры проекта по правилам Nested БЭМ.\r ## Технологии\r 1. HTML\r 2. CSS\r 3. JavaScript\r ## Ссылка на проект\r https://viktoriyamalikova.github.io/mesto/",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViktoriyaMalikova/mesto.git"
+  },
+  "author": "Viktoriya Malikova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViktoriyaMalikova/mesto/issues"
+  },
+  "homepage": "https://github.com/ViktoriyaMalikova/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "core-js": "^3.31.1"
+  }
+}
