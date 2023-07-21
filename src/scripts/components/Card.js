@@ -1,8 +1,9 @@
 class Card {
-    constructor(cardData, templateSelector, handleCardClick) {
+    constructor(cardData, templateSelector, handleCardClick, openDeletePopup) {
         this._cardData = cardData;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
+        this._openDeletePopup = openDeletePopup;
     }
 
     _getTemplate = () => {
@@ -14,8 +15,8 @@ class Card {
         this._likeElement.classList.toggle('elements__like_active');
     }
 
-    _handleDeleteElement = () => {
-        this._element.remove();
+    _openDeleteElement = () => {
+        this._openDeletePopup(this);
     }
 
     _handleOpenPopupImage = () => {
@@ -24,8 +25,12 @@ class Card {
 
     _setEventListeners = () => {
         this._likeElement.addEventListener('click', this._handleLike);
-        this._deleteElement.addEventListener('click', this._handleDeleteElement);
+        this._deleteElement.addEventListener('click', this._openDeleteElement);
         this._imageElement.addEventListener('click', this._handleOpenPopupImage);
+    }
+
+    removeCard() {
+        this._element.remove();
     }
 
     generateCard = () => {

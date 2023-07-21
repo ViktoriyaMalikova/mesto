@@ -1,6 +1,6 @@
 .profile__add-avatar-btn {
     all: unset;
-    background-image: url(../../../images/profile/profile__add-avatar-button.svg);
+    background-image: url(../../../images/profile/profile__edit-button.svg);
     width: 120px;
     height: 120px;
     border-radius: 50%;

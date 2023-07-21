@@ -5,7 +5,7 @@ class Section {
         this._renderer = renderer;
     }
 
-    addCardsFromArray() {
+    renderItems() {
         this._initialCards.forEach(card => {
             this._renderer(card);
         })
