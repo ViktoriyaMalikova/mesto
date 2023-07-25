@@ -9,8 +9,8 @@ class PopupWithImage extends Popup {
 
     open = (cardData) => {
         this._popupImage.src = cardData.link;
-        this._popupImage.alt = cardData.title;
-        this._popupFigcaption.textContent = cardData.title;
+        this._popupImage.alt = cardData.name;
+        this._popupFigcaption.textContent = cardData.name;
         super.open()
     }
 }
